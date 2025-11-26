@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    // --- Project Structure ---
+    "target": "es2020",
+    "module": "commonjs", 
+    "rootDir": "./",
+    "outDir": "./dist-typeorm", // The CLI will read the compiled JS from here
+    "moduleResolution": "node",
+
+    // --- TypeORM/Decorator Requirements (Critical Fixes for TS Errors) ---
+    "experimentalDecorators": true, 
+    "emitDecoratorMetadata": true, 
+    "useDefineForClassFields": false, 
+
+    // --- Interoperability/Compatibility ---
+    "esModuleInterop": true, 
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "app/entities/*.ts",
+    "app/migrations/*.ts",
+    "app/AppDataSource.ts"
+  ]
+}

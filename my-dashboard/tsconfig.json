@@ -15,6 +15,9 @@
     "incremental": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
     "plugins": [
       {
         "name": "next"

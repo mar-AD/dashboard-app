@@ -34,7 +34,7 @@ export class Contact {
     updatedAt!: Date;
 
     @Column({ name: 'agency_id', type: 'varchar' })
-    agencyId!: string; // Foreign key column
+    agencyId!: string; // Foreign key column (now looser due to relationship config)
 
     @Column({ name: 'firm_id', type: 'varchar', nullable: true })
     firmId!: string | null;
@@ -43,7 +43,9 @@ export class Contact {
     department!: string | null;
 
     // RELATIONSHIP: Contact belongs to one Agency
-    @ManyToOne(() => Agency, (agency) => agency.contacts)
+    // CRITICAL FIX: Setting createForeignKeyConstraints: false allows records 
+    // to be saved even if the agency_id does not exist in the 'agency' table.
+    @ManyToOne(() => Agency, (agency) => agency.contacts, { createForeignKeyConstraints: false })
     @JoinColumn({ name: 'agency_id' }) // Specifies the foreign key column
     agency!: Agency;
 }

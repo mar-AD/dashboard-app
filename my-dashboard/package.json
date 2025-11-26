@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "tsx prisma/seed.ts"
+    "seed": "tsx seed/seed.ts",
+    "typeorm:compile": "tsc --project tsconfig.typeorm.json",
+    "migration:generate": "npm run typeorm:compile && npx typeorm migration:generate app/migrations/AddUserAndFixContact --dataSource dist-typeorm/app/AppDataSource.js",
+    "migration:run": "npm run typeorm:compile && npx typeorm migration:run --dataSource dist-typeorm/app/AppDataSource.js"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.35.5",
@@ -19,8 +22,7 @@
     "pg": "^8.16.3",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "reflect-metadata": "^0.2.2",
-    "typeorm": "^0.3.27"
+    "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -34,6 +36,7 @@
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.6",
+    "typeorm": "^0.3.27",
     "typescript": "^5.9.3"
   }
 }

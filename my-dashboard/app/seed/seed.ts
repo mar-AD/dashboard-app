@@ -1,8 +1,8 @@
 import 'reflect-metadata'; // Must be the first import
-import { AppDataSource } from '../app/AppDataSource';
-import { Agency } from '../app/entities/Agency';
-import { Contact } from '../app/entities/Contact';
-
+import { AppDataSource } from '../AppDataSource';
+import { Agency } from '../entities/Agency';
+import { Contact } from '../entities/Contact';
+import { default as chalk } from 'chalk';
 // Keep all the file system and path imports
 import fs from 'fs';
 import path from 'path';
@@ -126,8 +126,8 @@ async function main() {
 
   for (const c of contacts) {
     // Check for parent agency existence
-    const agencyExists = await agencyRepository.findOne({ where: { id: c.agency_id } });
-    if (!agencyExists) continue;
+    // const agencyExists = await agencyRepository.findOne({ where: { id: c.agency_id } });
+    // if (!agencyExists) continue;
 
     let contact = await contactRepository.findOne({ where: { id: c.id } });
     

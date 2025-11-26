@@ -69,6 +69,7 @@ export class Agency {
 
     @Column({ name: 'updated_at', type: 'timestamp', nullable: true })
     updatedAt!: Date | null;    
+    
     // RELATIONSHIP: Agency has many Contacts
     @OneToMany(() => Contact, (contact) => contact.agency)
     contacts!: Contact[];
